@@ -10,6 +10,8 @@ http://maven.apache.org/maven-v4_0_0.xsd">
 	<name>MavenSpringJsfTemplate</name>
 	<url>http://maven.apache.org</url>
 
+
+	<!-- C'est pour la dépendance PrimeFaces qui n'est pas dans la librairie officielle Maven Repositories -->
 	<repositories>
 		<repository>
 			<id>prime-repo</id>
@@ -21,7 +23,7 @@ http://maven.apache.org/maven-v4_0_0.xsd">
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<java.version>1.6</java.version>
+		<java.version>1.7</java.version>
 		<spring.version>3.2.3.RELEASE</spring.version>
 		<spring.security.version>3.1.4.RELEASE</spring.security.version>
 		<hibernate.version>4.2.2.Final</hibernate.version>
@@ -67,7 +69,7 @@ http://maven.apache.org/maven-v4_0_0.xsd">
 			<version>${spring.version}</version>
 		</dependency>
 
-		<!-- JSF library -->
+		<!-- JSF library pour le framework de présentation-->
 		<dependency>
 			<groupId>com.sun.faces</groupId>
 			<artifactId>jsf-api</artifactId>
@@ -86,11 +88,11 @@ http://maven.apache.org/maven-v4_0_0.xsd">
 			<version>1.2</version>
 		</dependency>
 
-		<!-- Primefaces library -->
+		<!-- Primefaces library pour ajouter des composants graphiques à JSF-->
 		<dependency>
 			<groupId>org.primefaces</groupId>
 			<artifactId>primefaces</artifactId>
-			<version>3.1.1</version>
+			<version>3.5</version>
 		</dependency>
 
 		<!-- Hibernate library -->
@@ -119,6 +121,7 @@ http://maven.apache.org/maven-v4_0_0.xsd">
 			<version>5.1.17</version>
 		</dependency>
 
+		<!-- permet de faire des pools de connection -->
 		<dependency>
 			<groupId>c3p0</groupId>
 			<artifactId>c3p0</artifactId>
@@ -151,9 +154,6 @@ http://maven.apache.org/maven-v4_0_0.xsd">
 					<source>${java.version}</source>
 					<target>${java.version}</target>
 					<encoding>UTF-8</encoding>
-					<excludes>
-						<exclude>**\/.svn</exclude>
-					</excludes>
 				</configuration>
 			</plugin>
 

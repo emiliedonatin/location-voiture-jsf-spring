@@ -8,6 +8,8 @@
 <h:body>
     <h:form>
         <h:outputText value="USERs : "></h:outputText>
+	
+		<!-- le h:datatable est l'équivalent du foreach -->
         <h:dataTable id="users" var="user" value="#{userMB.userList}" style="width: 10%">
             <h:column>
                 <f:facet name="header">
@@ -26,6 +28,12 @@
                     <h:outputText value="Prenom" />
                 </f:facet>
                 <h:outputText value="#{user.firstName}" />
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="ACTION" />
+                </f:facet>
+                <h:commandLink action="#{userMB.deleteUser}" value="Supprimer"></h:commandLink>
             </h:column>
         </h:dataTable>
     </h:form>

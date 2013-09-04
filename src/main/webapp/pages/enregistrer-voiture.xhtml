@@ -1,0 +1,50 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<ui:composition template="template.xhtml">
+
+	<ui:define name="titrePage">Enregistrement des voitures</ui:define>
+
+	<ui:define name="body">
+		<!-- le formulaire JSF n'a pas d'action (il n'est pas en POST ou en GET) -->
+		<h:form>
+
+			<table>
+
+				<tr>
+					<td><h:outputLabel for="marque" value="Marque : " /></td>
+					<td><p:inputText id="marque"
+							value="#{voitureMB.voiture.marque}" required="true">
+							<f:validateLength minimum="5" />
+						</p:inputText></td>
+				</tr>
+				<tr>
+					<td><h:outputLabel for="modele" value="Modele : " /></td>
+					<td><p:inputText id="modele"
+							value="#{voitureMB.voiture.modele}">
+
+							<f:validateLength minimum="5" />
+						</p:inputText></td>
+				</tr>
+				<tr>
+					<td><p:commandButton id="addVoiture" value="Enregistrer"
+							action="#{voitureMB.addVoiture}" /></td>
+					<td><p:commandButton id="reset" value="Reset"
+							action="#{voitureMB.reset}" ajax="false" immediate="true" /></td>
+					<!-- l'action immediate=true signifie qu'il n'y a pas de validation obligatoire -->
+
+
+					<!-- ce bouton va directement sur une page -->
+					<td><p:commandButton id="ListVoitures" value="Liste des voitures"
+							action="list-voitures" ajax="false" immediate="true" /></td>
+					<td><p:commandButton id="accueil" value="Retour à l'accueil"
+							action="accueil" ajax="false" immediate="true" /></td>
+				</tr>
+			</table>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

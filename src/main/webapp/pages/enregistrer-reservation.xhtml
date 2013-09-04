@@ -1,0 +1,78 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="template.xhtml">
+
+	<ui:define name="titrePage">Enregistrement des reservations</ui:define>
+	
+
+	<ui:define name="body">
+
+		<h:form>
+
+			<table>
+				<tr>
+					<td><h:outputLabel for="Client" value=" Liste des clients : " /></td>
+					<td><p:selectOneMenu
+							value="#{reservationMB.reservation.client.id}">
+							<f:selectItems value="#{clientMB.itemClient}"></f:selectItems>
+						</p:selectOneMenu></td>
+				</tr>
+
+				<tr>
+					<td><h:outputLabel for="Voiture"
+							value=" Liste des voitures disponibles : " /></td>
+					<td><p:selectOneMenu
+							value="#{reservationMB.reservation.voiture.id}">
+							<f:selectItems value="#{voitureMB.itemVoiture}"></f:selectItems>
+						</p:selectOneMenu></td>
+				</tr>
+				<tr>
+					<td><h:outputLabel for="dateReservation"
+							value="Date de la reservation : " /></td>
+					<td><p:inputText id="dateReservation"
+							value="#{reservationMB.reservation.dateReservation}">
+							<!-- Format de la date que l'on veut passer -->
+							<f:convertDateTime pattern="dd/MM/yyyy" timeZone="Europe/Paris" />
+						</p:inputText></td>
+				</tr>
+				<tr>
+					<td><h:outputLabel for="datePriseVoiture"
+							value="Date de prise de la voiture : " /></td>
+					<td><p:inputText id="datePriseVoiture"
+							value="#{reservationMB.reservation.datePriseVoiture}">
+							<!-- Format de la date que l'on veut passer -->
+							<f:convertDateTime pattern="dd/MM/yyyy" timeZone="Europe/Paris" />
+						</p:inputText></td>
+				</tr>
+				<tr>
+					<td><h:outputLabel for="dateRetour"
+							value="Date de retour de la voiture : " /></td>
+					<td><p:inputText id="retourVoiture"
+							value="#{reservationMB.reservation.retourVoiture}">
+							<!-- Format de la date que l'on veut passer -->
+							<f:convertDateTime pattern="dd/MM/yyyy" timeZone="Europe/Paris" />
+						</p:inputText></td>
+				</tr>
+
+				<tr>
+
+					<td><p:commandButton id="addReservation" value="Enregistrer"
+							action="#{reservationMB.addReservation}" ajax="false" /></td>
+					<td><p:commandButton id="ListReservations"
+							value="Liste des reservations" action="list-reservations"
+							ajax="false" immediate="true" /></td>
+					<td><p:commandButton id="accueil"
+							value="Retour à l'accueil" action="accueil"
+							ajax="false" immediate="true" /></td>
+				</tr>
+
+			</table>
+		</h:form>
+	</ui:define>
+</ui:composition>
+
+</html>

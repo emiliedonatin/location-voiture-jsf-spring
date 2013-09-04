@@ -1,4 +1,4 @@
-package fr.treeptik.dao;
+package fr.treeptik.dao.impl;
 
 import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
@@ -10,10 +10,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceException;
 import javax.persistence.Query;
 
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-
+import fr.treeptik.dao.BaseDao;
 import fr.treeptik.exception.DAOException;
 import fr.treeptik.model.BaseEntity;
 
@@ -26,6 +23,8 @@ public class BaseDaoImpl<T extends BaseEntity<I>, I extends Serializable>
 	private EntityManager entityManager;
 	private Class<T> type;
 
+	
+	//	ce bout de code dans le DAOGeneric permet de ne pas mettre de constructeur dans les DAOImpl
 	public BaseDaoImpl() {
 		this.type = (Class<T>) ((ParameterizedType) getClass()
 				.getGenericSuperclass()).getActualTypeArguments()[0];

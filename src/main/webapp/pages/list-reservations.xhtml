@@ -1,0 +1,92 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="template.xhtml">
+
+	<ui:define name="titrePage">Liste des reservations</ui:define>
+
+	<ui:define name="body">
+		<h:form>
+
+
+			<p:dataTable id="reservations" var="reservation"
+				value="#{reservationMB.reservationList}" style="width: 10%">
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="#{msg['client.nom']}" />
+					</f:facet>
+					<h:outputText value="#{reservation.client.nom}" />
+				</p:column>
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="#{msg['client.prenom']}" />
+					</f:facet>
+					<h:outputText value="#{reservation.client.prenom}" />
+				</p:column>
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="#{msg['voiture.marque']}" />
+					</f:facet>
+					<h:outputText value="#{reservation.voiture.marque}" />
+				</p:column>
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="#{msg['voiture.modele']}" />
+					</f:facet>
+					<h:outputText value="#{reservation.voiture.modele}" />
+				</p:column>
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="Date de la reservation" />
+					</f:facet>
+					<h:outputText value="#{reservation.dateReservation}" />
+				</p:column>
+
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="Date de prise de la voiture" />
+					</f:facet>
+					<h:outputText value="#{reservation.datePriseVoiture}" />
+				</p:column>
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="Date de retour de la voiture" />
+					</f:facet>
+					<h:outputText value="#{reservation.retourVoiture}" />
+				</p:column>
+
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="ACTION" />
+					</f:facet>
+					<h:commandLink action="#{reservationMB.deleteReservation}"
+						value="Supprimer"></h:commandLink>
+				</p:column>
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="ACTION" />
+					</f:facet>
+					<h:commandLink action="#{reservationMB.updateReservation}"
+						value="Modifier"></h:commandLink>
+				</p:column>
+			</p:dataTable>
+			
+			<br />
+			<br />
+			
+			<td><p:commandButton id="enregistrerVoiture"
+					value="Enregistrer une voiture" action="enregistrer-voiture"
+					ajax="false" immediate="true" /></td>
+			<td><p:commandButton id="enregistrerClient"
+					value="Enregistrer un client" action="enregistrer-client"
+					ajax="false" immediate="true" /></td>
+			<td><p:commandButton id="accueil" value="Retour à l'accueil"
+					action="accueil" ajax="false" immediate="true" /></td>
+		</h:form>
+	</ui:define>
+</ui:composition>
+
+</html>

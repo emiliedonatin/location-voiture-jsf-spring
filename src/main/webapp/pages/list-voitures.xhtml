@@ -1,0 +1,93 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="template.xhtml">
+
+	<ui:define name="titrePage">Liste des voitures disponibles</ui:define>
+
+	<ui:define name="body">
+		
+		<h:form>
+		
+		<p:toolbar>  
+    <p:toolbarGroup align="left">  
+        <p:commandButton type="button" value="New" icon="ui-icon-document" />  
+  
+        <p:commandButton type="button" value="Open" icon="ui-icon-folder-open"/>  
+  
+        <p:separator />  
+  		
+        <p:commandButton type="button" title="Save client" icon="ui-icon-disk"  action="#{clientMB.addClient}"
+					ajax="false" immediate="true"/>  
+        <p:commandButton type="button" title="Delete" icon="ui-icon-trash"/>  
+        <p:commandButton type="button" title="Print" icon="ui-icon-print"/>  
+    </p:toolbarGroup>  
+  
+    <p:toolbarGroup align="right">  
+        <p:menuButton value="Options">  
+            <p:menuitem value="Home" url="http://www.primefaces.org" />  
+            <p:menuitem value="ShowCase"  
+                        url="http://www.primefaces.org/showcase" />  
+            <p:menuitem value="TouchFaces"  
+                        url="http://www.primefaces.org/showcase/touch" />  
+        </p:menuButton>  
+    </p:toolbarGroup>  
+  
+  </p:toolbar>  
+  
+  <br/>
+  <br/>
+  <br/>
+
+			<!-- le h:datatable est l'équivalent du foreach -->
+			<p:dataTable id="voitures" var="voiture"
+				value="#{voitureMB.voitureList}" style="width: 10%">
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="ID" />
+					</f:facet>
+					<h:outputText value="#{voiture.id}" />
+				</p:column>
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="Marque" />
+					</f:facet>
+					<h:outputText value="#{voiture.marque}" />
+				</p:column>
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="Modele" />
+					</f:facet>
+					<h:outputText value="#{voiture.modele}" />
+				</p:column>
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="ACTION" />
+					</f:facet>
+					<h:commandLink action="#{voitureMB.deleteVoiture}"
+						value="Supprimer"/>
+				</p:column>
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="ACTION" />
+					</f:facet>
+					<h:commandLink action="#{voitureMB.updateVoiture}" value="Modifier" />
+				</p:column>
+			</p:dataTable>
+			<br/>
+			<br/>
+			<td><p:commandButton id="enregistrerClient"
+					value="Enregistrer un client" action="enregistrer-client"
+					ajax="false" immediate="true" /></td>
+			<td><p:commandButton id="enregistrerReservation"
+					value="Faire une reservation" action="enregistrer-reservation"
+					ajax="false" immediate="true" /></td>
+			<td><p:commandButton id="accueil" value="Retour à l'accueil"
+					action="accueil" ajax="false" immediate="true" /></td>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

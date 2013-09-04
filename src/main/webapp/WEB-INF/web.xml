@@ -29,6 +29,7 @@
       </listener>
  
       <!-- Project Stage Level -->
+	  <!-- C'est une configuration JSF pour dire que le projet est en mode développement -->
       <context-param>
         <param-name>javax.faces.PROJECT_STAGE</param-name>
         <param-value>Development</param-value>
@@ -39,6 +40,7 @@
         <welcome-file>/pages/index.xhtml</welcome-file>
       </welcome-file-list>
 
+	<!-- c'est le point d'entrée -->
 	<servlet>
 		<servlet-name>Faces Servlet</servlet-name>
 		<servlet-class>javax.faces.webapp.FacesServlet</servlet-class>

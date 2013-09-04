@@ -9,6 +9,7 @@ public abstract class BaseEntity<I extends Serializable> implements
 	
 	protected I id;
 
+//	cela signifie que tous nos POJO auront obligatoirement une donnée membre qui sera un Id
 	public abstract I getId();
 	public abstract void setId(I id);
 

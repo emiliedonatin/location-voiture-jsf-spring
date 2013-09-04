@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<f:view locale="#{localeMB.locale}">
+
+	<h:head>
+		<meta charset="utf-8" />
+		<title>Location de voiture en ligne</title>
+
+
+	</h:head>
+
+	<h:body>
+
+		<h1>
+			<ui:insert name="titrePage" /> 
+			<h:form> <h:commandLink action="#{localeMB.changeLocaleToFr}" value="FR"/> --- <h:commandLink action="#{localeMB.changeLocaleToEn}" value="EN"/>  </h:form>
+		</h1>
+
+		<ui:insert name="body" />
+
+		<br />
+		<br />
+		<br />
+Location voiture by Treeptik
+</h:body>
+</f:view>
+</html>

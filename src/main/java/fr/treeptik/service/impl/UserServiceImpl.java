@@ -1,5 +1,6 @@
-package fr.treeptik.service;
+package fr.treeptik.service.impl;
 
+import java.io.Serializable;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,10 +11,13 @@ import fr.treeptik.dao.UserDao;
 import fr.treeptik.exception.DAOException;
 import fr.treeptik.exception.ServiceException;
 import fr.treeptik.model.User;
+import fr.treeptik.service.UserService;
 
 @Service("userService")
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl implements UserService, Serializable {
 
+	private static final long serialVersionUID = 1L;
+	
 	@Autowired
 	private UserDao userDao;
 
@@ -46,7 +50,12 @@ public class UserServiceImpl implements UserService {
 	@Override
 	@Transactional
 	public void deleteUser(Integer id) throws ServiceException {
-		throw new UnsupportedOperationException();
+		
+		try {
+			userDao.remove(id);
+		} catch (DAOException e) {
+			throw new ServiceException(e.getMessage(), e);
+		}
 	}
 
 	@Override

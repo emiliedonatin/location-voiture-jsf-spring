@@ -1,17 +1,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:p="http://primefaces.org/ui">
+	xmlns:f="http://java.sun.com/jsf/core">
 <h:head>
 	<title>Welcome to JSF_Spring_Hibernate_Project</title>
 </h:head>
 <h:body>
 
-
-
-
-
-
+			<!-- le formulaire JSF n'a pas d'action (il n'est pas en POST ou en GET) -->
 			<h:form>
 
 				<table>
@@ -31,9 +26,13 @@
 					</tr>
 					<tr>
 						<td><h:commandButton id="addUser" value="Add"
-								action="#{userMB.addUser}" ajax="false" /></td>
+								action="#{userMB.addUser}" /></td>
 						<td><h:commandButton id="reset" value="Reset"
 								action="#{userMB.reset}" ajax="false" immediate="true" /></td>
+						<!-- l'action immediate=true signifie qu'il n'y a pas de validation obligatoire -->
+								
+						
+						<!-- ce bouton va directement sur une page -->
 						<td><h:commandButton id="ListUsers" value="List Users"
 								action="list-users" ajax="false" immediate="true" /></td>
 					</tr>
